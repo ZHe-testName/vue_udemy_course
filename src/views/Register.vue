@@ -10,7 +10,10 @@
                       <router-link to="{name: 'login'}">Need an account?</router-link>
                   </p>
 
-                  VALIDATION FIELDS
+                  <app-validation-errors
+                    v-if="validationErrors"
+                    :validationErrors="validationErrors"
+                    />
 
                   <form @submit.prevent="onSubmit">
                       <fieldset class="form-group">
@@ -54,6 +57,8 @@
 </template>
 
 <script>
+import AppValidationErrors from '@/components/ValidationErrors';
+
 export default {
     name: 'AppRegister',
     //для удобной работы с формой
@@ -71,6 +76,12 @@ export default {
         isSubmitting() {
             return this.$store.state.auth.isSubmitting;
         },
+        validationErrors() {
+            return this.$store.state.auth.validationErrors;
+        },
+    },
+    components: {
+        AppValidationErrors,
     },
     methods: {
         onSubmit() {
