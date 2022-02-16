@@ -1,4 +1,5 @@
 import authApi from '@/api/auth';
+import {setItem} from '@/helpers/persistanceStorage';
 
 const state = {
     isSubmitting: false,
@@ -47,7 +48,11 @@ const actions = {
                 .then(res => {
                     context.commit('registerSuccess', res.data.user);
                     resolve(res.data.user);
-
+                    //экшены хорошо подходят для сайдеффектов
+                    //по этому мы именно от сюда 
+                    //делаем запросы к API
+                    //или к localStorage
+                    setItem('authToken', res.data.user.token);
                 })
                 .catch(err => {
                     context.commit('registerFailure', err.response.data.errors);
