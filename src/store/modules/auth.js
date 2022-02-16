@@ -2,6 +2,9 @@ import authApi from '@/api/auth';
 
 const state = {
     isSubmitting: false,
+    currentUser: null,
+    validationErrors: null,
+    isLoggedOn: null,
 };
 
 //так как у нас в большинстве случаев
@@ -14,12 +17,16 @@ const state = {
 const mutations = {
     registerStart(state) {
         state.isSubmitting = true;
+        state.validationErrors = null;
     },
-    registerSuccess(state) {
+    registerSuccess(state, payload) {
         state.isSubmitting = false;
+        state.currentUser = payload;
+        state.isLoggedOn = true;
     },
-    registerFailure(state) {
+    registerFailure(state, payload) {
         state.isSubmitting = false;
+        state.validationErrors = payload;
     },
 };
 

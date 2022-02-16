@@ -17,21 +17,27 @@
                         <input 
                             type="text" 
                             class="form-control form-control-lg"
-                            placeholder="Username">
+                            placeholder="Username"
+                            v-model="username"
+                            >
                       </fieldset>
 
                       <fieldset class="form-group">
                         <input 
                             type="text" 
                             class="form-control form-control-lg"
-                            placeholder="Email">
+                            placeholder="Email"
+                            v-model="email"
+                            >
                       </fieldset>
 
                       <fieldset class="form-group">
                         <input 
                             type="password" 
                             class="form-control form-control-lg"
-                            placeholder="Password">
+                            placeholder="Password"
+                            v-model="password"
+                            >
                       </fieldset>
 
                       <button 
@@ -50,6 +56,17 @@
 <script>
 export default {
     name: 'AppRegister',
+    //для удобной работы с формой
+    //мы используем обычный data
+    //и свяжем его данные с полями формы
+    //с помощю двустороннего связывания v-model
+    data() {
+        return {
+            email: '',
+            username: '',
+            password: '',
+        };
+    },
     computed: {
         isSubmitting() {
             return this.$store.state.auth.isSubmitting;
@@ -60,13 +77,18 @@ export default {
             //благодоря тому что экшн возвращает промис
             //теперь мы можем работать тут с помощю .then
             this.$store.dispatch('register', {
-                email: 'ffff@ffff.com',
-                username: 'fffff999000',
-                password: '1234',
+                email: this.email,
+                username: this.username,
+                password: this.password,
             })
             //теперь можно делать с юзером что угодно
             //на пример отправить его на свою страничку
-            .then(user => console.log(user));
+            .then(user => {
+                console.log(user);
+                //таким образом можно сделать редирект на нужную
+                //страницу при помощи объекта с именем
+                this.$router.push({name: 'home'});
+            });
         },
     },
 }
