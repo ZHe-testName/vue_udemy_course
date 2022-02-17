@@ -94,11 +94,11 @@ const mutations = {
     },
 };
 
-// export const getterTypes = {
-//     currentUser: '[auth] currentUser',
-//     isLoggedOn: '[auth] isLoggedOn',
-//     isAnonymous: '[auth] isAnonymous',
-// };
+export const getterTypes = {
+    currentUser: '[auth] currentUser',
+    isLoggedOn: '[auth] isLoggedOn',
+    isAnonymous: '[auth] isAnonymous',
+};
 
 //гетткры нужны для того чтобы не дудлировать код
 //в разных компонентах для которых нужны определенные одни и те же данные
@@ -110,13 +110,13 @@ const mutations = {
 
 //в модулях геттеры принимают не глобальный стейт а лиш срез своего модуля
 const getters = {
-    currentUser: state => {
+    [getterTypes.currentUser]: state => {
         return state.currentUser;
     },
-    isLoggedOn: state => {
+    [getterTypes.isLoggedOn]: state => {
         return Boolean(state.isLoggedOn);
     },
-    isAnonymous: state => {
+    [getterTypes.isAnonymous]: state => {
         return state.isLoggedOn === false;
     },
 };

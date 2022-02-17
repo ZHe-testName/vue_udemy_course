@@ -90,23 +90,21 @@
 </template>
 
 <script>
-// import getterTypes from '@/store/modules/auth';
+import {getterTypes} from '@/store/modules/auth';
 import {mapGetters} from 'vuex';
 
 export default {
     name: 'AppHeader',
     computed: {
-        ...mapGetters([
-            'currentUser',
-            'isLoggedOn',
-            'isAnonymous',
-        ]),
+        ...mapGetters({
+            currentUser: getterTypes.currentUser,
+            isLoggedOn: getterTypes.isLoggedOn,
+            isAnonymous: getterTypes.isAnonymous,
+        }),
         // currentUser() {
-        //     console.log(this.$store.getters[getterTypes.currentUser]);
         //     return this.$store.getters[getterTypes.currentUser];
         // },
         // isLoggedOn() {
-        //     console.log(this.$store.getters[getterTypes.isLoggedOn]);
         //     return this.$store.getters[getterTypes.isLoggedOn];
         // },
         // isAnonymous() {
