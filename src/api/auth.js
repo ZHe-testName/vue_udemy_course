@@ -5,6 +5,16 @@ const register = credentials => {
     return axios.post('/users', {user: credentials});
 };
 
+const login = crudentials => {
+    return axios.post('/users/login', {user: crudentials});
+};
+
+const getCurrentUser = () => {
+    return axios.get('/user');
+};
+
 export default {
     register,
+    login,
+    getCurrentUser,
 };
