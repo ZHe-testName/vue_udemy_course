@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '@/views/Home';
+import GlobalFeed from '@/views/GlobalFeed';
 import Register from '@/views/Register';
 import Login from '@/views/Login';
 
@@ -14,8 +14,8 @@ const routes = [
   //какойто путь нам не нужно будет веносить правки в проект
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    name: 'globalFeed',
+    component: GlobalFeed,
   },
   {
     path: '/register',

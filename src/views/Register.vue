@@ -101,7 +101,7 @@ export default {
                 console.log(user);
                 //таким образом можно сделать редирект на нужную
                 //страницу при помощи объекта с именем
-                this.$router.push({name: 'home'});
+                this.$router.push({name: 'globalFeed'});
             });
         },
     },

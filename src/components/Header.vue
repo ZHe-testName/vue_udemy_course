@@ -3,7 +3,7 @@
       <div class="container">
           <router-link 
             class="navbar-brand" 
-            :to="{name: 'home'}"
+            :to="{name: 'globalFeed'}"
             >
             Medium Clone</router-link>
 
@@ -14,7 +14,7 @@
               <li class="nav-item">
                   <router-link 
                     class="nav-link" 
-                    :to="{name: 'home'}"
+                    :to="{name: 'globalFeed'}"
                     active-class="active"
                     exact
                     >
@@ -101,15 +101,6 @@ export default {
             isLoggedOn: getterTypes.isLoggedOn,
             isAnonymous: getterTypes.isAnonymous,
         }),
-        // currentUser() {
-        //     return this.$store.getters[getterTypes.currentUser];
-        // },
-        // isLoggedOn() {
-        //     return this.$store.getters[getterTypes.isLoggedOn];
-        // },
-        // isAnonymous() {
-        //     return this.$store.getters[getterTypes.isAnonymous];
-        // },
     },
 }
 </script>

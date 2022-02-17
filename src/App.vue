@@ -16,7 +16,6 @@ export default {
     AppHeader,
   },
   mounted() {
-    console.log('hello from app');
     this.$store.dispatch(actionTypes.getCurrentUser);
   },
 }
