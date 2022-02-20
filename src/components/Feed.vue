@@ -54,7 +54,12 @@
                 </span>
             </router-link>
           </div>
-          PAGINATION
+          
+          <app-pagination
+            :total="total"
+            :limit="limit"
+            :currentPage="currentPage"
+            :url="url" />
       </div>
   </div>
 </template>
@@ -62,9 +67,21 @@
 <script>
 import {actionTypes} from '@/store/modules/feed';
 import {mapState} from 'vuex';
+import AppPagination from '@/components/Pagination';
 
 export default {
     name: 'AppFeed',
+    data() {
+        return {
+            total: 503,
+            limit: 10,
+            currentPage: 5,
+            url: '/tags/dragons',
+        };
+    },
+    components: {
+        AppPagination
+    },
     props: {
         apiUrl: {
             type: String,
@@ -72,7 +89,6 @@ export default {
         },
     },
     mounted() {
-        console.log(this.feed);
         this.$store.dispatch(actionTypes.getFeed, {apiUrl: this.apiUrl});
     },
     computed: {
