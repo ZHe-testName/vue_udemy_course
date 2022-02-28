@@ -8,7 +8,7 @@
               </div>
 
               <div class="col-md-3">
-                  POPULAR TAGS
+                  <app-popular-tags/>
               </div>
           </div>
       </div>
@@ -17,11 +17,13 @@
 
 <script>
 import AppFeed from '@/components/Feed';
+import AppPopularTags from '@/components/PopularTags';
 
 export default {
     name: 'AppGlobalFeed',
     components: {
         AppFeed,
+        AppPopularTags,
     },
     data() {
         return {
