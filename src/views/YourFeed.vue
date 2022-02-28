@@ -22,7 +22,7 @@ import AppPopularTags from '@/components/PopularTags';
 import AppBanner from '@/components/Banner';
 
 export default {
-    name: 'AppGlobalFeed',
+    name: 'AppYourFeed',
     components: {
         AppFeed,
         AppPopularTags,
@@ -30,7 +30,7 @@ export default {
     },
     data() {
         return {
-            apiUrl: '/articles',
+            apiUrl: '/articles/feed',
         };
     },
 }

@@ -22,16 +22,18 @@ import AppPopularTags from '@/components/PopularTags';
 import AppBanner from '@/components/Banner';
 
 export default {
-    name: 'AppGlobalFeed',
+    name: 'AppTagFeed',
     components: {
         AppFeed,
         AppPopularTags,
         AppBanner,
     },
-    data() {
-        return {
-            apiUrl: '/articles',
-        };
+    computed: {
+        apiUrl() {
+            const tagName = this.$route.params.slug;
+            
+            return `/articles?tag=${tagName}`;
+        },
     },
 }
 </script>

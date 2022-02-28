@@ -1,12 +1,8 @@
 <template>
   <div>
-      <div v-if="isLoading">
-          Loading ...
-      </div>
+      <app-loader v-if="isLoading"/>
 
-      <div v-if="errors">
-          Some bas is happend
-      </div>
+      <app-error-message v-if="error"/>
 
       <div v-if="feed">
           <div
@@ -70,6 +66,8 @@ import {mapState} from 'vuex';
 import AppPagination from '@/components/Pagination';
 import {limit} from '@/helpers/vars';
 import {stringify, parseUrl} from 'query-string';
+import AppLoader from '@/components/Loader';
+import AppErrorMessage from '@/components/ErrorMessage';
 
 export default {
     name: 'AppFeed',
@@ -79,7 +77,9 @@ export default {
         };
     },
     components: {
-        AppPagination
+        AppPagination,
+        AppLoader,
+        AppErrorMessage,
     },
     props: {
         apiUrl: {
@@ -94,7 +94,7 @@ export default {
         ...mapState({
             isLoading: state => state.feed.isLoading,
             feed: state => state.feed.data,
-            errors: state => state.feed.errors,
+            error: state => state.feed.errors,
         }),
         currentPage() {
             return +this.$route.query.page || 1;
