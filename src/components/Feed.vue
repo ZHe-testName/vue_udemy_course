@@ -48,6 +48,8 @@
                 <span>
                     Read more...
                 </span>
+
+                <app-tag-list :tags="article.tagList" />
             </router-link>
           </div>
           
@@ -68,6 +70,7 @@ import {limit} from '@/helpers/vars';
 import {stringify, parseUrl} from 'query-string';
 import AppLoader from '@/components/Loader';
 import AppErrorMessage from '@/components/ErrorMessage';
+import AppTagList from '@/components/TagList';
 
 export default {
     name: 'AppFeed',
@@ -80,6 +83,7 @@ export default {
         AppPagination,
         AppLoader,
         AppErrorMessage,
+        AppTagList,
     },
     props: {
         apiUrl: {
