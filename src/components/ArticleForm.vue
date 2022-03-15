@@ -3,7 +3,7 @@
       <div class="container page">
           <div class="row">
               <div class="col-md-10 offset-md-1 col-xs-12">
-                  <app-error-message v-if="errors"/>
+                  <app-validation-errors v-if="errors" :validationErrors="errors"/>
 
                   <form @submit.prevent="onSubmit">
                       <fieldset>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import AppErrorMessage from '@/components/ErrorMessage';
+import AppValidationErrors from '@/components/ValidationErrors';
 
 export default {
     name: 'AppArticleForm',
@@ -73,7 +73,7 @@ export default {
         };
     },
     components: {
-        AppErrorMessage,
+        AppValidationErrors,
     },
     props: {
         initialValues: {
@@ -95,7 +95,7 @@ export default {
                 title: this.title,
                 description: this.description,
                 body: this.body,
-                tagList: this.tagList,
+                tagList: this.tagList.split(' '),
             };
             
             this.$emit('articleSubmit', form);
