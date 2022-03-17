@@ -33,12 +33,6 @@ export default {
         }),
         initialValues() {
             if (!this.article){
-                // return {    
-                //     title: '',
-                //     description: '',
-                //     body: '',
-                //     tagList: [],
-                // };
                 return null;
             }
 
