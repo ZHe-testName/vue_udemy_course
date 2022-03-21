@@ -29,7 +29,11 @@
                 </div>
 
                 <div class="pull-xs-right">
-                    ADD TO FAVORITES
+                    <app-add-to-favorite
+                        :isFavorited="article.favorited"
+                        :favoriteCount="article.favoritesCount"
+                        :articleSlug="article.slug"
+                    />
                 </div>
             </div>
 
@@ -71,6 +75,7 @@ import {stringify, parseUrl} from 'query-string';
 import AppLoader from '@/components/Loader';
 import AppErrorMessage from '@/components/ErrorMessage';
 import AppTagList from '@/components/TagList';
+import AppAddToFavorite from '@/components/AddToFavorite';
 
 export default {
     name: 'AppFeed',
@@ -84,6 +89,7 @@ export default {
         AppLoader,
         AppErrorMessage,
         AppTagList,
+        AppAddToFavorite,
     },
     props: {
         apiUrl: {
@@ -118,6 +124,9 @@ export default {
     watch: {
         currentPage() {
             this.changeFeed();
+        },
+        apiUrl() {
+           this.changeFeed(); 
         },
     },
     methods: {
